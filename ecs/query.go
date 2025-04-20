@@ -6,12 +6,12 @@ type Query struct {
 }
 
 // Returns a new query with the added component Id.
-func (query Query) With(componentId ComponentId) Query {
+func (query Query) With(componentId ...ComponentId) Query {
 	if query.componentsToInclude == nil {
 		query.componentsToInclude = make([]ComponentId, 0)
 	}
 
-	query.componentsToInclude = append(query.componentsToInclude, componentId)
+	query.componentsToInclude = append(query.componentsToInclude, componentId...)
 
 	return query
 }
